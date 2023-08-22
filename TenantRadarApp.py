@@ -245,10 +245,20 @@ if zip_Capsule is not None:
     with col3:
         st.metric('Sansan 名刺数',len(df_Sansan))
     ################################################################################################
+    
+    if int(kilo.replace('km',''))<=3:
+        zoomlevel=13
+    if 3<int(kilo.replace('km',''))<=5:
+        zoomlevel=12
+    if 5<int(kilo.replace('km',''))<=15:
+        zoomlevel=11
+    if 15<int(kilo.replace('km','')):
+        zoomlevel=10
+    
     Map=fl.Map(
         location=[gdf_PropGeo.loc[0,'POINT_Y'],gdf_PropGeo.loc[0,'POINT_X']],
         tiles='cartodbpositron',
-        zoom_start=13
+        zoom_start=zoomlevel
     )
     Group=fl.FeatureGroup(name=gdf_PropGeo.loc[0,'Label'],show=True).add_to(Map)
     PU='<br>'.join([gdf_PropGeo.loc[0,'Label'],gdf_PropGeo.loc[0,'Property'],gdf_PropGeo.loc[0,'Address']])
