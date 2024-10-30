@@ -3,3 +3,4 @@ pandas==1.5.3
 numpy==1.24.2
 folium==0.14.0
 geopandas==0.12.2
+altair==4.0
